@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CerpenAI - Wujudkan Mimpi dalam Pena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .hero-bg {
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+        
+        .glow-yellow {
+            text-shadow: 0 0 20px rgba(255, 235, 59, 0.6), 0 0 40px rgba(255, 235, 59, 0.4);
+        }
+        
+        .magical-button {
+            background: linear-gradient(135deg, #ffd54f, #ffb300);
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .magical-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+        }
+        
+        .magical-input {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .magical-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 235, 59, 0.5);
+            box-shadow: 0 0 20px rgba(255, 235, 59, 0.3);
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffd54f, #ffb300);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .stars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            color: #fbbf24;
+            animation: twinkle 2s infinite;
+        }
+        
+        .star:nth-child(2n) {
+            animation-delay: 0.5s;
+            color: #f59e0b;
+        }
+        
+        .star:nth-child(3n) {
+            animation-delay: 1s;
+            color: #fde047;
+        }
+        
+        .star:nth-child(4n) {
+            animation-delay: 1.5s;
+            color: #facc15;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div class="hero-bg">
+        <!-- Twinkling Stars -->
+        <div class="stars-container" id="starsContainer"></div>
+        
+        <div class="content-overlay">
+            <!-- Header Navigation -->
+            <header class="w-full px-6 py-6">
+                <div class="max-w-7xl mx-auto flex justify-between items-center">
+                    <!-- Logo -->
+                    <div class="text-white text-2xl font-bold glow-text">
+                        CerpenAI
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#" class="nav-link text-white font-medium hover:text-yellow-300">Beranda</a>
+                        <a href="#" class="nav-link text-white font-medium hover:text-yellow-300">Fitur</a>
+                        <a href="#" class="nav-link text-white font-medium hover:text-yellow-300">Cerita</a>
+                        <a href="#" class="nav-link text-white font-medium hover:text-yellow-300">Tentang</a>
+                        <a href="#" class="nav-link text-white font-medium hover:text-yellow-300">Login</a>
+                    </nav>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+                        ☰
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="md:hidden hidden mt-4 bg-black bg-opacity-50 rounded-lg p-4">
+                    <div class="flex flex-col space-y-3">
+                        <a href="#" class="text-white font-medium hover:text-yellow-300">Beranda</a>
+                        <a href="#" class="text-white font-medium hover:text-yellow-300">Fitur</a>
+                        <a href="#" class="text-white font-medium hover:text-yellow-300">Cerita</a>
+                        <a href="#" class="text-white font-medium hover:text-yellow-300">Tentang</a>
+                        <a href="#" class="text-white font-medium hover:text-yellow-300">Login</a>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="flex-1 flex items-center justify-center px-6 py-12">
+                <div class="max-w-2xl mx-auto text-center">
+                    <!-- Main Headline -->
+                    <h1 class="text-6xl md:text-7xl font-bold text-yellow-300 glow-yellow mb-6">
+                        Cerpen AI
+                    </h1>
+                    
+                    <!-- Subheadline -->
+                    <p class="text-xl md:text-2xl text-gray-100 glow-text mb-12 font-medium">
+                        Wujudkan mimpi anda dalam pena
+                    </p>
+                    
+                    <!-- Story Creation Form -->
+                    <div class="max-w-md mx-auto">
+                        <form onsubmit="startWriting(event)" class="space-y-6">
+                            <!-- Title Input -->
+                            <div>
+                                <input 
+                                    type="text" 
+                                    id="storyTitle"
+                                    placeholder="Tulis judul ceritamu..." 
+                                    class="magical-input w-full px-6 py-4 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-0 text-lg"
+                                    required
+                                >
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <button 
+                                type="submit"
+                                class="magical-button w-full py-4 px-8 rounded-full text-gray-800 font-bold text-lg hover:text-gray-900"
+                            >
+                                Mulai Menulis
+                            </button>
+                        </form>
+                        
+                        <!-- Success Message -->
+                        <div id="successMessage" class="hidden mt-6 p-4 bg-green-500 bg-opacity-20 border border-green-400 rounded-lg">
+                            <p class="text-green-300 font-medium">Cerita Anda sedang dibuat! Mari mulai petualangan menulis yang magis!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative SVG Elements -->
+                    <div class="mt-16 flex justify-center space-x-8">
+                        <svg class="w-12 h-12 text-blue-200 animate-bounce" style="animation-delay: 0s;" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.5c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/>
+                            <path d="M12 6.5c-3 0-5.5 2.5-5.5 5.5s2.5 5.5 5.5 5.5 5.5-2.5 5.5-5.5-2.5-5.5-5.5-5.5z"/>
+                        </svg>
+                        <svg class="w-10 h-10 text-yellow-300 animate-bounce" style="animation-delay: 0.2s;" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="w-12 h-12 text-purple-300 animate-bounce" style="animation-delay: 0.4s;" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2c1.1 0 2 .9 2 2 0 .74-.4 1.38-1 1.73v2.54l1.5-1.5c.39-.39 1.02-.39 1.41 0s.39 1.02 0 1.41L13.5 9.5h2.54c.35-.6.99-1 1.73-1 1.1 0 2 .9 2 2s-.9 2-2 2c-.74 0-1.38-.4-1.73-1h-2.54l1.5 1.5c.39.39.39 1.02 0 1.41s-1.02.39-1.41 0L12 13.5v2.54c.6.35 1 .99 1 1.73 0 1.1-.9 2-2 2s-2-.9-2-2c0-.74.4-1.38 1-1.73V13.5l-1.5 1.5c-.39.39-1.02.39-1.41 0s-.39-1.02 0-1.41L10.5 11.5H7.96c-.35.6-.99 1-1.73 1-1.1 0-2-.9-2-2s.9-2 2-2c.74 0 1.38.4 1.73 1h2.54L9 8c-.39-.39-.39-1.02 0-1.41s1.02-.39 1.41 0L12 8.5V5.96c-.6-.35-1-.99-1-1.73 0-1.1.9-2 2-2z"/>
+                        </svg>
+                        <svg class="w-10 h-10 text-red-300 animate-bounce" style="animation-delay: 0.6s;" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <svg class="w-10 h-10 text-yellow-400 animate-bounce" style="animation-delay: 0.8s;" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        function startWriting(event) {
+            event.preventDefault();
+            
+            const titleInput = document.getElementById('storyTitle');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (titleInput.value.trim()) {
+                // Show success message
+                successMessage.classList.remove('hidden');
+                
+                // Add some magical effects
+                titleInput.style.background = 'rgba(255, 235, 59, 0.2)';
+                titleInput.style.borderColor = 'rgba(255, 235, 59, 0.8)';
+                
+                // Reset form after a delay
+                setTimeout(() => {
+                    titleInput.value = '';
+                    titleInput.style.background = 'rgba(255, 255, 255, 0.1)';
+                    titleInput.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    successMessage.classList.add('hidden');
+                }, 3000);
+                
+                // Add some sparkle effects
+                createSparkles();
+            }
+        }
+        
+        function createSparkles() {
+            const sparkleContainer = document.createElement('div');
+            sparkleContainer.style.position = 'fixed';
+            sparkleContainer.style.top = '0';
+            sparkleContainer.style.left = '0';
+            sparkleContainer.style.width = '100%';
+            sparkleContainer.style.height = '100%';
+            sparkleContainer.style.pointerEvents = 'none';
+            sparkleContainer.style.zIndex = '1000';
+            
+            document.body.appendChild(sparkleContainer);
+            
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-yellow-300">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>`;
+                sparkle.style.position = 'absolute';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animation = `sparkleFloat ${Math.random() * 3 + 2}s ease-out forwards`;
+                
+                sparkleContainer.appendChild(sparkle);
+            }
+            
+            setTimeout(() => {
+                document.body.removeChild(sparkleContainer);
+            }, 5000);
+        }
+        
+        // Add sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(0);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateY(-50px) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Generate twinkling stars
+        function generateStars() {
+            const starsContainer = document.getElementById('starsContainer');
+            const numberOfStars = 50;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.innerHTML = `<svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>`;
+                
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Random animation duration
+                star.style.animationDuration = (Math.random() * 3 + 1) + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Add some ambient magical effects on page load
+        window.addEventListener('load', () => {
+            generateStars();
+            setTimeout(() => {
+                createSparkles();
+            }, 1000);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b419f1a60a072d',t:'MTc1NDU0MTY4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
