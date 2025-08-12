@@ -1,4 +1,4 @@
-# 📥 [Download Cerpen AI APK](https://drive.google.com/uc?export=download&id=LINK_GOOGLE_DRIVE)
+# 📥 [Download Cerpen AI APK]([https://drive.google.com/uc?export=download&id=LINK_GOOGLE_DRIVE](https://drive.google.com/file/d/1uRm86jU5fnPOUwyFzQANRGzzGFGiU5eV/view?usp=sharing))
 
 ⚠️ Link berlaku **30 hari**. Jika sudah kadaluarsa, akan diperpanjang.
 💬 Jika saya lupa perpanjang, tolong ingatkan di komunitas WhatsApp:
